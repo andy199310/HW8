@@ -3,4 +3,5 @@
 
 
     <string name="default_string">Default String</string>
+    <string name="widget_button">Push me!!</string>
 </resources>

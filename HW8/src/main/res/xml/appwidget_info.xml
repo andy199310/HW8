@@ -5,10 +5,10 @@
                     android:minHeight="72dp"
                     android:updatePeriodMillis="86400000"
                     android:initialLayout="@layout/appwidget"
-                    android:configure="com.weigreen.hw8.MyAppWidgetConfigure"
                     android:resizeMode="horizontal|vertical"
                     android:widgetCategory="home_screen|keyguard">
 </appwidget-provider>
         <!--
+                            android:configure="com.weigreen.hw8.MyAppWidgetConfigure"
         android:previewImage="@drawable/preview"
         -->
