@@ -10,6 +10,17 @@
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme">
 
+
+        <receiver android:name="MyAppWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                       android:resource="@xml/example_appwidget_info" />
+        </receiver>
+
+
+        <activity android:name=".MyAppWidgetConfigure" android:label="ffff"/>
     </application>
 
 </manifest>
