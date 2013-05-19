@@ -14,17 +14,32 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+        public static final int button_submit=0x7f07000a;
+        public static final int editText_period=0x7f070007;
+        public static final int editText_word=0x7f070006;
+        public static final int textView_now_time=0x7f070008;
+        public static final int textView_now_time_zone=0x7f070009;
+        public static final int textView_show_period=0x7f070003;
+        public static final int textView_show_time=0x7f070004;
+        public static final int textView_show_time_zone=0x7f070005;
+        public static final int textView_show_word=0x7f070002;
         public static final int widget_button=0x7f070001;
         public static final int widget_textView=0x7f070000;
     }
     public static final class layout {
         public static final int appwidget=0x7f030000;
-        public static final int main=0x7f030001;
+        public static final int layout_appwidget_configure=0x7f030001;
+        public static final int main=0x7f030002;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int default_string=0x7f050001;
-        public static final int widget_button=0x7f050002;
+        public static final int config_show_period=0x7f050001;
+        public static final int config_show_time=0x7f050002;
+        public static final int config_show_time_zone=0x7f050003;
+        public static final int config_show_word=0x7f050004;
+        public static final int default_string=0x7f050005;
+        public static final int submit=0x7f050006;
+        public static final int widget_button=0x7f050007;
     }
     public static final class style {
         /** 

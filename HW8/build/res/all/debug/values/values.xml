@@ -2,7 +2,12 @@
 <resources>
 
     <string name="app_name">HW8</string>
+    <string name="config_show_period">The second want to update:</string>
+    <string name="config_show_time">Time:</string>
+    <string name="config_show_time_zone">Time zone</string>
+    <string name="config_show_word">The word want to display:</string>
     <string name="default_string">Default String</string>
+    <string name="submit">Submit</string>
     <string name="widget_button">Push me!!</string>
 
     <style name="AppBaseTheme" parent="android:Theme.Light">

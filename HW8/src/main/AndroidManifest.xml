@@ -20,7 +20,11 @@
         </receiver>
 
 
-        <activity android:name=".MyAppWidgetConfigure" android:label="ffff"/>
+        <activity android:name=".MyAppWidgetConfigure" android:label="ffff">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
