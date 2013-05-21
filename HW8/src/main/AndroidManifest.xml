@@ -20,10 +20,10 @@
         </receiver>
 
 
-        <activity android:name=".MyAppWidgetConfigure" android:label="ffff">
+        <activity android:name=".MyAppWidgetConfigure" android:label="Config">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
-            </intent-filter>ㄑｄｄ
+            </intent-filter>
         </activity>
 
     </application>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/all"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -17,17 +18,6 @@
             android:id="@+id/textView_show_period"
             android:layout_marginTop="27dp"
             android:layout_below="@+id/textView_show_word" android:layout_alignParentLeft="true"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/config_show_time"
-            android:id="@+id/textView_show_time" android:layout_below="@+id/textView_show_period" android:layout_alignParentLeft="true"
-            android:layout_marginTop="51dp"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/config_show_time_zone"
-            android:id="@+id/textView_show_time_zone" android:layout_below="@+id/textView_show_time" android:layout_alignParentLeft="true"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,20 +30,8 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/editText_period"
-            android:layout_above="@+id/textView_show_time" android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/textView_show_period" android:layout_alignParentRight="true"
             android:layout_alignLeft="@+id/editText_word"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView_now_time" android:layout_alignTop="@+id/textView_show_time"
-            android:layout_toRightOf="@+id/textView_show_time_zone"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView_now_time_zone" android:layout_below="@+id/textView_now_time"
-            android:layout_toRightOf="@+id/textView_show_time_zone"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

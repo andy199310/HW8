@@ -46,13 +46,14 @@ public class MyAppWidgetProvider extends AppWidgetProvider{
             // Create an Intent to launch ExampleActivity
             Intent intent = new Intent(context, MyAppWidgetConfigure.class);
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             // Get the layout for the App Widget and attach an on-click listener
             // to the button
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.appwidget);
-            views.setOnClickPendingIntent(R.id.widget_button, pendingIntent);
-            views.setTextViewText(R.id.widget_textView, MyAppWidgetConfigure.loadTitlePref(context, appWidgetId));
+            views.setOnClickPendingIntent(R.id.button_submit, pendingIntent);
+            views.setTextViewText(R.id.button_submit, MyAppWidgetConfigure.loadTitlePref(context, appWidgetId));
+            views.setOnClickPendingIntent(R.id.image, pendingIntent);
             // Tell the AppWidgetManager to perform an update on the current app widget
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
@@ -83,13 +84,14 @@ public class MyAppWidgetProvider extends AppWidgetProvider{
         // package, but it needs this because on the other side it's the widget host inflating
         // the layout from our package).
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.appwidget);
-        views.setTextViewText(R.id.widget_textView, text);
+        views.setTextViewText(R.id.button_submit, text);
 
         //set the configure
         Intent intent = new Intent(context, MyAppWidgetConfigure.class);
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setOnClickPendingIntent(R.id.widget_button, pendingIntent);
+        views.setOnClickPendingIntent(R.id.image, pendingIntent);
         Log.d(TAG, "here:" + intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID));
         // Tell the widget manager
         appWidgetManager.updateAppWidget(appWidgetId, views);

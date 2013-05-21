@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.view.*;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 /**
  * Created by green on 2013/5/18.
@@ -62,6 +64,10 @@ public class MyAppWidgetConfigure extends Activity {
 
         inputWord.setText(loadTitlePref(MyAppWidgetConfigure.this, mAppWidgetId));
 
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.all);
+        registerForContextMenu(relativeLayout);
+
+
     }
 
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -87,7 +93,52 @@ public class MyAppWidgetConfigure extends Activity {
     };
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menus, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.about:
+                about();
+                return true;
+            case R.id.exit:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menus, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about:
+                about();
+                return true;
+            case R.id.exit:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void about(){
+        Toast.makeText(getApplicationContext(), R.string.about, Toast.LENGTH_LONG).show();
+    }
 
     // Write the prefix to the SharedPreferences object for this widget
     static void saveTitlePref(Context context, int appWidgetId, String text) {
@@ -106,10 +157,5 @@ public class MyAppWidgetConfigure extends Activity {
         } else {
             return context.getString(R.string.default_string);
         }
-    }
-
-
-    public void finishConfigure(View view){
-
     }
 }
