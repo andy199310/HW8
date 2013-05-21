@@ -23,8 +23,9 @@
         <activity android:name=".MyAppWidgetConfigure" android:label="ffff">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
-            </intent-filter>
+            </intent-filter>ㄑｄｄ
         </activity>
+
     </application>
 
 </manifest>
