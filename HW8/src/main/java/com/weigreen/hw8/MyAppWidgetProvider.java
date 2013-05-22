@@ -1,8 +1,10 @@
 package com.weigreen.hw8;
 
+import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -16,12 +18,7 @@ public class MyAppWidgetProvider extends AppWidgetProvider{
     //Log tag
     private static final String TAG = "MyAppWidgetProvider";
 
-    @Override
-    public void onDisabled(Context context) {
-// TODO Auto-generated method stub
-//super.onDisabled(context);
-        Toast.makeText(context, "onDisabled()", Toast.LENGTH_LONG).show();
-    }
+
 
     @Override
     public void onEnabled(Context context) {
@@ -98,5 +95,33 @@ public class MyAppWidgetProvider extends AppWidgetProvider{
         Log.d(TAG, "what-.-");
     }
 
+    private static AlarmManager alarmManager;
+    private static PendingIntent alarmPendingIntent;
+
+    static void saveAlarmManager(AlarmManager alarmManagerT, PendingIntent alarmPendingIntentT){
+        alarmManager = alarmManagerT;
+        alarmPendingIntent = alarmPendingIntentT;
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+
+        Log.d(TAG, "OnReceive");
+
+        if (intent.getAction() == "com.weigreen.hw8.APPWIDGET_ALARM_UPDATE"){
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            ComponentName componentName = new ComponentName(context.getPackageName(), MyAppWidgetProvider.class.getName());
+            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(componentName);
+            onUpdate(context, appWidgetManager, appWidgetIds);
+        }
+    }
+
+    @Override
+    public void onDisabled(Context context) {
+        alarmManager.cancel(alarmPendingIntent);
+        Toast.makeText(context, "onDisabled()", Toast.LENGTH_LONG).show();
+
+    }
 
 }

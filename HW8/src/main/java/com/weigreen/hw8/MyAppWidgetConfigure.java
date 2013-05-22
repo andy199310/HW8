@@ -1,6 +1,8 @@
 package com.weigreen.hw8;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +13,8 @@ import android.view.*;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 /**
  * Created by green on 2013/5/18.
@@ -82,6 +86,19 @@ public class MyAppWidgetConfigure extends Activity {
             // Push widget update to surface with newly set prefix
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
             MyAppWidgetProvider.updateAppWidget(context, appWidgetManager, mAppWidgetId, titlePrefix);
+
+            //Make the alarm manager
+            Intent alarmIntent = new Intent("com.weigreen.hw8.APPWIDGET_ALARM_UPDATE");
+            PendingIntent alarmPendingIntent = PendingIntent.getActivity(context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            int time = Integer.parseInt(inputPeriod.getText().toString());
+            AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.add(Calendar.SECOND, time);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 20*1000, alarmPendingIntent);
+
+            MyAppWidgetProvider.saveAlarmManager(alarmManager, alarmPendingIntent);
 
             // Make sure we pass back the original appWidgetId
             Intent resultValue = new Intent();

@@ -23,6 +23,7 @@
         <activity android:name=".MyAppWidgetConfigure" android:label="Config">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+                <action android:name="com.weigreen.hw8.APPWIDGET_ALARM_UPDATE"/>
             </intent-filter>
         </activity>
 

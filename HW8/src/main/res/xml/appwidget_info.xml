@@ -3,7 +3,7 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
                     android:minWidth="110dp"
                     android:minHeight="110dp"
-                    android:updatePeriodMillis="86400000"
+                    android:updatePeriodMillis="0"
                     android:initialLayout="@layout/appwidget"
                     android:configure="com.weigreen.hw8.MyAppWidgetConfigure"
                     android:resizeMode="horizontal|vertical"
